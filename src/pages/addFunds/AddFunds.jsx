@@ -22,6 +22,7 @@ const AddFunds = () => {
     e.preventDefault();
     console.log(formData);
     alert('✅ Fund request submitted!');
+    e.target.reset();
   };
 
   return (
@@ -107,27 +108,6 @@ const AddFunds = () => {
               required
             />
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           {/* Submit */}
           <div className="text-center pt-4">
            
