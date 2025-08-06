@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="relative w-full bg-black text-white pt-20">
+    <div className="relative w-full  bg-black text-white pt-20">
       {/* Floating "SA Online Zone" title */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[70%] z-30">
 <div className="card">

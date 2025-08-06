@@ -1,17 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { FiUpload } from "react-icons/fi";
 
 const AddFunds = () => {
   const [formData, setFormData] = useState({
-    method: '',
-    senderAccount: '',
-    transactionId: '',
-    amount: '',
+    method: "",
+    senderAccount: "",
+    transactionId: "",
+    amount: "",
     screenshot: null,
   });
 
+  const [currentBalance, setCurrentBalance] = useState(2000);
+  const [lastRequested, setLastRequested] = useState(0);
+  const [totalRequested, setTotalRequested] = useState(5000);
+
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === 'screenshot') {
+    if (name === "screenshot") {
       setFormData({ ...formData, screenshot: files[0] });
     } else {
       setFormData({ ...formData, [name]: value });
@@ -20,119 +25,155 @@ const AddFunds = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    alert('✅ Fund request submitted!');
+
+    const amountValue = parseFloat(formData.amount);
+    if (
+      !formData.method ||
+      !formData.senderAccount ||
+      !formData.transactionId ||
+      isNaN(amountValue) ||
+      amountValue <= 0 ||
+      !formData.screenshot
+    ) {
+      alert("Please fill in all fields correctly.");
+      return;
+    }
+
+    // Simulate balance update
+    setCurrentBalance((prev) => prev + amountValue);
+    setLastRequested(amountValue);
+    setTotalRequested((prev) => prev + amountValue);
+
+    alert("✅ Fund request submitted!");
+
+    // Reset form
+    setFormData({
+      method: "",
+      senderAccount: "",
+      transactionId: "",
+      amount: "",
+      screenshot: null,
+    });
+
     e.target.reset();
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center py-10 px-4">
-      <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
-        <h2 className="text-3xl font-bold text-center text-blue-700 mb-6">Add Funds</h2>
+    <div className=" w-full lg:w-fit mx-auto mt-8 p-6 rounded-xl bg-gradient-to-r from-blue-700 to-sky-500 text-white shadow-lg">
+      <h2 className="text-2xl font-bold text-center mb-6">Add Funds</h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Method */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Method Name <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="method"
-              value={formData.method}
-              onChange={handleChange}
-              placeholder="e.g., Bkash, Nagad, Bank"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          {/* Sender Account */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Sender Account <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="senderAccount"
-              value={formData.senderAccount}
-              onChange={handleChange}
-              placeholder="e.g., 01XXXXXXXXX"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          {/* Transaction ID */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Transaction ID <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="text"
-              name="transactionId"
-              value={formData.transactionId}
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          {/* Amount */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Amount (৳) <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="number"
-              name="amount"
-              value={formData.amount}
-              onChange={handleChange}
-              placeholder="Enter amount"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              required
-            />
-          </div>
-
-          {/* Screenshot Upload */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Upload Screenshot <span className="text-red-500">*</span>
-            </label>
-            <input
-              type="file"
-              name="screenshot"
-              accept="image/*"
-              onChange={handleChange}
-              className="w-full border border-gray-300 rounded-lg p-2 file:mr-4 file:py-1 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200"
-              required
-            />
-          </div>
-          {/* Submit */}
-          <div className="text-center pt-4">
-           
-
-  <div className="relative group">
-    <button type='submit'
-      className="relative inline-block p-px font-semibold leading-6 text-white bg-neutral-900 shadow-2xl cursor-pointer rounded-2xl shadow-emerald-900 transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 hover:shadow-emerald-600"
-    >
-      <span
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-cyan-500 to-sky-600 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      ></span>
-      <span className="relative z-10 block px-6 py-3 rounded-2xl bg-neutral-950">
-        <div class="relative z-10 flex items-center space-x-3">
-          <span
-            className="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300"
-            > Submit Fund Request</span>
+      {/* Summary Section */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center">
+        <div className="bg-white/20 rounded-lg p-4">
+          <p className="text-sm">Current Balance</p>
+          <h3 className="text-lg font-bold">{currentBalance} ৳</h3>
         </div>
-      </span>
-    </button>
-  </div>
-            
-          </div>
-        </form>
+        <div className="bg-white/20 rounded-lg p-4">
+          <p className="text-sm">Last Request</p>
+          <h3 className="text-lg font-bold">{lastRequested} ৳</h3>
+        </div>
+        <div className="bg-white/20 rounded-lg p-4">
+          <p className="text-sm">Total Requested</p>
+          <h3 className="text-lg font-bold">{totalRequested} ৳</h3>
+        </div>
       </div>
-    </section>
+
+      {/* Form */}
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 bg-white/10 backdrop-blur rounded-lg p-6"
+      >
+        {/* Method */}
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Payment Method
+          </label>
+          <select
+            name="method"
+            value={formData.method}
+            onChange={handleChange}
+            className="w-full rounded-md px-3 py-2  hover:text-slate-900 border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            required
+          >
+            <option className=" text-slate-950" value="">Select a method</option>
+            <option className=" text-slate-950" value="bkash">bKash</option>
+            <option className=" text-slate-950" value="nagad">Nagad</option>
+            <option className=" text-slate-950" value="rocket">Rocket</option>
+            <option className=" text-slate-950" value="bank">Bank Transfer</option>
+          </select>
+        </div>
+
+        {/* Sender Account */}
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Sender Account
+          </label>
+          <input
+            type="text"
+            name="senderAccount"
+            value={formData.senderAccount}
+            onChange={handleChange}
+            placeholder="e.g., 01XXXXXXXXX"
+            className="w-full rounded-md px-3 py-2 text-white border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            required
+          />
+        </div>
+
+        {/* Transaction ID */}
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Transaction ID
+          </label>
+          <input
+            type="text"
+            name="transactionId"
+            value={formData.transactionId}
+            onChange={handleChange}
+            placeholder="e.g., TX123456789"
+            className="w-full rounded-md px-3 py-2 text-white border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            required
+          />
+        </div>
+
+        {/* Amount */}
+        <div>
+          <label className="block text-sm font-medium mb-1">Amount (৳)</label>
+          <input
+            type="number"
+            name="amount"
+            value={formData.amount}
+            onChange={handleChange}
+            placeholder="Enter amount"
+            min="1"
+            className="w-full rounded-md px-3 py-2 text-white border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            required
+          />
+        </div>
+
+        {/* Screenshot Upload */}
+        <div>
+          <label className="block text-sm font-medium mb-1 flex items-center gap-2">
+            <FiUpload /> Upload Screenshot
+          </label>
+          <input
+            type="file"
+            name="screenshot"
+            accept="image/*"
+            onChange={handleChange}
+            className="w-full rounded-md px-3 py-2 text-white file:mr-4 file:py-1 file:px-4 file:rounded-md file:border-0 file:text-sm file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 bg-white/10"
+            required
+          />
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="w-full bg-white text-blue-700 font-semibold py-2 rounded-md hover:bg-gray-100 transition"
+        >
+          Submit Fund Request
+        </button>
+      </form>
+    </div>
   );
 };
 
