@@ -13,7 +13,7 @@ const JobTask = () => {
   }, []);
 
   return (
-    <div className="p-4 w-fit   bg-white  sm:p-6 lg:p-8">
+    <div className="p-4 w-full   bg-white  sm:p-6 lg:p-8">
       <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800">
         Job Applications
       </h2>

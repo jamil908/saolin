@@ -33,27 +33,27 @@ const  WithDrawForm = () => {
   };
 
   return (
-    <div className="w-full  lg:w-fit md:m-10 lg:mx-auto mx-auto mt-8 p-6 rounded-xl bg-gradient-to-r from-blue-700 to-sky-500 text-white shadow-lg">
+    <div className="w-full bg-slate-900 md:m-10 lg:mx-auto mx-auto mt-8 p-6 rounded-xl text-white shadow-lg">
       <h2 className="text-2xl font-bold text-center mb-6">Withdraw Funds</h2>
 
       {/* Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center">
-        <div className="bg-white/20 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
           <p className="text-sm">Available Balance</p>
           <h3 className="text-lg font-bold">{availableBalance} ৳</h3>
         </div>
-        <div className="bg-white/20 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
           <p className="text-sm">Last Withdraw</p>
           <h3 className="text-lg font-bold">{lastWithdraw} ৳</h3>
         </div>
-        <div className="bg-white/20 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
           <p className="text-sm">Total Withdrawn</p>
           <h3 className="text-lg font-bold">{totalWithdrawn} ৳</h3>
         </div>
       </div>
 
       {/* Withdraw Form */}
-      <form onSubmit={handleSubmit} className="space-y-4 bg-white/10 backdrop-blur rounded-lg p-6">
+      <form onSubmit={handleSubmit} className="space-y-4   backdrop-blur rounded-lg p-6">
         {/* Payment Method */}
         <div>
           <label className="block text-sm font-medium mb-1">Payment Method</label>
@@ -102,7 +102,7 @@ const  WithDrawForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-white text-red-700 font-semibold py-2 rounded-md hover:bg-gray-100 transition"
+          className="w-full bg-gradient-to-r from-blue-700 to-sky-500 text-white font-semibold py-2 rounded-md  transition"
         >
           Submit Withdrawal 
         </button>

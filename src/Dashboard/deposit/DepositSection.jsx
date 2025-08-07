@@ -29,20 +29,20 @@ const DepositSection = () => {
   };
 
   return (
-    <div className="w-full lg:w-fit mx-auto mt-8 p-6 rounded-xl bg-gradient-to-r from-blue-700 to-sky-500 text-white shadow-lg">
+    <div className="w-full  mx-auto mt-8 p-6 rounded-xl bg-slate-900 text-white shadow-lg">
       <h2 className="text-2xl font-bold text-center mb-6">Deposit Funds</h2>
 
       {/* Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center">
-        <div className="bg-white/20 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
           <p className="text-sm">Current Balance</p>
           <h3 className="text-lg font-bold">{currentBalance} ৳</h3>
         </div>
-        <div className="bg-white/20 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
           <p className="text-sm">Last Deposit</p>
           <h3 className="text-lg font-bold">{lastDeposit} ৳</h3>
         </div>
-        <div className="bg-white/20 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
           <p className="text-sm">Total Deposited</p>
           <h3 className="text-lg font-bold">{totalDeposited} ৳</h3>
         </div>
@@ -97,7 +97,7 @@ const DepositSection = () => {
 
         <button
           type="submit"
-          className="w-full bg-white text-blue-700 font-semibold py-2 rounded-md hover:bg-gray-100 transition"
+          className="w-full bg-gradient-to-r from-blue-700 to-sky-500 text-white font-semibold py-2 rounded-md hover:bg-gray-100 transition"
         >
           Submit Deposit
         </button>
