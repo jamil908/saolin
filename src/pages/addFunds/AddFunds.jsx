@@ -59,11 +59,11 @@ const AddFunds = () => {
   };
 
   return (
-    <div className=" w-full mx-auto mt-8 p-6 rounded-xl bg-slate-900 text-white shadow-lg">
+    <div className=" w-full mx-auto mt-8 p-6 rounded-xl bg-white text-white shadow-lg">
       <h2 className="text-2xl font-bold text-center mb-6">Add Funds</h2>
 
       {/* Summary Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center">
+      <div className="grid grid-cols-1 sm:grid-cols-3 text-white gap-4 mb-8 text-center">
         <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
           <p className="text-sm">Current Balance</p>
           <h3 className="text-lg font-bold">{currentBalance} ৳</h3>
@@ -81,7 +81,7 @@ const AddFunds = () => {
       {/* Form */}
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 bg-white/10 backdrop-blur rounded-lg p-6"
+        className="space-y-6 bg-white/10 text-black border border-black backdrop-blur rounded-lg p-6"
       >
         {/* Method */}
         <div>
@@ -92,7 +92,7 @@ const AddFunds = () => {
             name="method"
             value={formData.method}
             onChange={handleChange}
-            className="w-full rounded-md px-3 py-2  hover:text-slate-900 border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full  border-black rounded-md px-3 py-2  hover:text-slate-900 border bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
             required
           >
             <option className=" text-slate-950" value="">Select a method</option>
@@ -114,7 +114,7 @@ const AddFunds = () => {
             value={formData.senderAccount}
             onChange={handleChange}
             placeholder="e.g., 01XXXXXXXXX"
-            className="w-full rounded-md px-3 py-2 text-white border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full  rounded-md px-3 py-2 text-black border border-black bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
             required
           />
         </div>
@@ -130,7 +130,7 @@ const AddFunds = () => {
             value={formData.transactionId}
             onChange={handleChange}
             placeholder="e.g., TX123456789"
-            className="w-full rounded-md px-3 py-2 text-white border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full rounded-md px-3 py-2  text-black border border-black  bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
             required
           />
         </div>
@@ -145,7 +145,7 @@ const AddFunds = () => {
             onChange={handleChange}
             placeholder="Enter amount"
             min="1"
-            className="w-full rounded-md px-3 py-2 text-white border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full rounded-md px-3 py-2  text-black border border-black  bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
             required
           />
         </div>

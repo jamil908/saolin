@@ -33,27 +33,27 @@ const  WithDrawForm = () => {
   };
 
   return (
-    <div className="w-full bg-slate-900 md:m-10 lg:mx-auto mx-auto mt-8 p-6 rounded-xl text-white shadow-lg">
+    <div className="w-full  md:m-10 lg:mx-auto mx-auto mt-8 p-6 rounded-xl text-black shadow-lg">
       <h2 className="text-2xl font-bold text-center mb-6">Withdraw Funds</h2>
 
       {/* Summary */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-center">
-        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
+        <div className="bg-gradient-to-r  from-blue-700 to-sky-500 text-white rounded-lg p-4">
           <p className="text-sm">Available Balance</p>
           <h3 className="text-lg font-bold">{availableBalance} ৳</h3>
         </div>
-        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 text-white rounded-lg p-4">
           <p className="text-sm">Last Withdraw</p>
           <h3 className="text-lg font-bold">{lastWithdraw} ৳</h3>
         </div>
-        <div className="bg-gradient-to-r from-blue-700 to-sky-500 rounded-lg p-4">
+        <div className="bg-gradient-to-r from-blue-700 to-sky-500 text-white rounded-lg p-4">
           <p className="text-sm">Total Withdrawn</p>
           <h3 className="text-lg font-bold">{totalWithdrawn} ৳</h3>
         </div>
       </div>
 
       {/* Withdraw Form */}
-      <form onSubmit={handleSubmit} className="space-y-4   backdrop-blur rounded-lg p-6">
+      <form onSubmit={handleSubmit} className="space-y-4 border border-black   backdrop-blur rounded-lg p-6">
         {/* Payment Method */}
         <div>
           <label className="block text-sm font-medium mb-1">Payment Method</label>
@@ -63,7 +63,7 @@ const  WithDrawForm = () => {
             name="method"
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value)}
-            className="w-full rounded-md px-3 py-2  hover:text-slate-900 border border-white/30 bg-transparent focus:outline-none focus:ring-2 focus:ring-white"
+            className="w-full rounded-md px-3 py-2  hover:text-slate-900 border border-black"
             required
           >
             <option className=" text-slate-950" value="">Select a method</option>
@@ -75,14 +75,14 @@ const  WithDrawForm = () => {
         </div>
 
         {/* Withdraw Amount */}
-        <div>
-          <label className="block text-sm font-medium mb-1">Withdraw Amount</label>
+        <div >
+          <label className="block text-sm font-medium mb-1 ">Withdraw Amount</label>
           <input
             type="number"
             value={withdrawAmount}
             onChange={(e) => setWithdrawAmount(e.target.value)}
             placeholder="e.g. 500"
-            className="w-full rounded-md px-3 py-2 text-white"
+            className="w-full rounded-md px-3 py-2 border border-black text-black"
             min="1"
             max={availableBalance}
           />
@@ -96,7 +96,7 @@ const  WithDrawForm = () => {
             value={accountNumber}
             onChange={(e) => setAccountNumber(e.target.value)}
             placeholder="e.g. 01XXXXXXXXX"
-            className="w-full rounded-md px-3 py-2 text-white"
+            className="w-full rounded-md px-3 border border-black  py-2 text-black"
           />
         </div>
 
