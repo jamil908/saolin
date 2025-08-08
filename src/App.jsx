@@ -8,6 +8,7 @@ import AddFunds from './pages/addFunds/AddFunds'
 import FAQSection from './pages/faqSection/FaqSection'
 import WhyChooseUs from './pages/whychoseus/WhyChooseUs'
 import Footer from './shared_file/footer'
+import PrivacyPolicySection from './shared_file/PrivacyPolicy'
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
    <WithDrawForm></WithDrawForm>
     <DepositSection></DepositSection>
     <AddFunds></AddFunds>
+    <PrivacyPolicySection></PrivacyPolicySection>
     <FAQSection></FAQSection>
     <WhyChooseUs></WhyChooseUs>
     
